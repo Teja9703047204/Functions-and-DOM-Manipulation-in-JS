@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>DOM Manipulation</title>
+	<style>
+		#paragraph{
+			color: black;
+		}
+		.list{
+			font-weight: normal;
+		}
+	</style>
+</head>
+<body>
+	<p id="paragraph" onmouseover="this.style.color='red'" onmouseout="this.style.color='black'">This is paragraph.</p>
+	<button id="button" onmouseover="this.innerHTML='MouseOver'" onmouseout="this.innerHTML='Click Here'">Click Here</button>
+	<br><br>
+	<input type="text" id="input">
+	<button onclick="document.getElementById('paragraph').innerHTML=document.getElementById('input').value">Updated Paragraph</button>
+	<br><br>
+
+	<ul>
+		<li class="list" onmouseover="this.style.fontWeight='bold';this.style.color='red'" onmouseout="this.style.fontWeight='normal';this.style.color='black'">List 1</li>
+		<li class="list" onmouseover="this.style.fontWeight='bold';this.style.color='red'" onmouseout="this.style.fontWeight='normal';this.style.color='black'">List 2</li>
+		<li class="list" onmouseover="this.style.fontWeight='bold';this.style.color='red'" onmouseout="this.style.fontWeight='normal';this.style.color='black'">List 3</li>
+	</ul>
+</body>
+</html>

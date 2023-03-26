@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mini Calculator App</title>
+	<style type="text/css">
+		button{
+			font-size: 20px;
+			padding: 10px 20px;
+			border: none;
+			margin: 5px;
+			cursor: pointer;
+			background-color: #eee;
+			border-radius: 5px;
+		}
+
+		#display{
+			border-radius: 5px;
+			font-size: 20px;
+			margin: 5px;
+			padding: 10px 20px;
+			background-color: #bbb;
+			border: none;
+			cursor: pointer;
+		}
+
+		button:hover,#display:hover{
+			background-color: #ddd;
+		}
+	</style>
+</head>
+<body>
+	<p id="exp"></p>
+	<input type="text" id="res" readonly>
+	<br>
+	<button onclick="toAddExpression(7)">7</button>
+	<button onclick="toAddExpression(8)">8</button>
+	<button onclick="toAddExpression(9)">9</button>
+	<button onclick="toAddOperator('+')">+</button>
+	<br>
+	<button onclick="toAddExpression(4)">4</button>
+	<button onclick="toAddExpression(5)">5</button>
+	<button onclick="toAddExpression(6)">6</button>
+	<button onclick="toAddOperator('-')">-</button>
+	<br>
+	<button onclick="toAddExpression(1)">1</button>
+	<button onclick="toAddExpression(2)">2</button>
+	<button onclick="toAddExpression(3)">3</button>
+	<button onclick="toAddOperator('*')">*</button>
+	<br>
+	<button onclick="toAddExpression(0)">0</button>
+	<button onclick="toAddOperator('/')">/</button>
+	<button onclick="toClearExpression()" id="display">Clear</button>
+	<button onclick="toEvaluateExpression()" id="display">=</button>
+
+	<script type="text/javascript">
+		let operand1='';
+		let operator='';
+		let operand2='';
+		let expression=document.getElementById('exp');
+		let result=document.getElementById('res');
+
+
+		function toAddExpression(value){
+			if(operator===''){
+				operand1+=value;
+				expression.innerHTML=operand1;
+			}
+			else{
+				operand2+=value;
+				expression.innerHTML=operand1+operator+operand2;
+			}
+		}
+
+		function toAddOperator(value){
+			operator=value;
+			expression.innerHTML=operand1+operator;
+		}
+
+		function toEvaluateExpression(){
+			let output;
+			switch(operator){
+				case '+':
+					output=parseInt(operand1)+parseInt(operand2);
+					break;
+				case '-':
+				    output=parseInt(operand1)-parseInt(operand2);
+				    break;
+				case '*':
+				    output=parseInt(operand1)*parseInt(operand2);
+				    break;
+				case '/':
+				    output=parseInt(operand1)/parseInt(operand2);
+				    break;
+			}
+			result.value=output;
+			expression.innerHTML='';
+			operand2='';
+			operand1='';
+			operator='';
+
+		}
+
+		function toClearExpression(){
+			operand1='';
+			operator='';
+			operand2='';
+			expression.innerHTML='';
+			result.value='';
+		}
+
+
+	</script>
+</body>
+</html>
